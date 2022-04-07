@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '6.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+group :production do
+
+  gem 'rails_12factor'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
