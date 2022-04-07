@@ -1,5 +1,5 @@
 class UserWord < ApplicationRecord
-    has_many :users
-    has_many :words
+    belongs_to :user
+    belongs_to :word
 
 end

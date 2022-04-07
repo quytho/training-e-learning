@@ -1,4 +1,4 @@
 class Practice < ApplicationRecord
-    has_many :users
-    has_many :lessons
+    belongs_to  :user
+    has_one     :lesson
 end

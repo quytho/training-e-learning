@@ -1,5 +1,4 @@
 class Word < ApplicationRecord
-    belongs_to :user_word
-    belongs_to :lesson
-
+    has_many    :user_words
+    belongs_to  :lesson
 end

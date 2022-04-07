@@ -1,9 +1,6 @@
 class User < ApplicationRecord
-    belongs_to :user_course
-    belongs_to :user_lesson
-    belongs_to :user_word
-
-    belongs_to :Practice
-
-
+    has_many :user_courses
+    has_many :user_lessons
+    has_many :user_words
+    has_many :practices
 end
