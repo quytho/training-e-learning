@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_071837) do
   end
 
   create_table "user_lessons", force: :cascade do |t|
-    t.boolean "is_status"
+    t.boolean "is_learned", default: false
     t.bigint "lesson_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_071837) do
   end
 
   create_table "user_words", force: :cascade do |t|
-    t.boolean "is_status"
+    t.boolean "is_learned", default: false
     t.bigint "word_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_071837) do
     t.string "email"
     t.string "password_digest"
     t.text "image"
-    t.boolean "is_admin"
+    t.boolean "is_admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
