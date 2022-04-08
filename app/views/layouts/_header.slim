@@ -1,0 +1,17 @@
+header (class ="navbar navbar-fixed-top navbar-inverse nav-header")
+  .container
+    = link_to "E-Learning",'#', id:"logo"
+    nav
+      ul (class ="nav navbar-nav navbar-right")
+        li = link_to "Home" ,'#'
+        li = link_to "Course" ,'#'
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown" href="#"
+            |Word list
+            b.caret
+          ul.dropdown-menu.drop_link_to
+            li = link_to"Word course 01"
+            li = link_to"Word course 02"
+            li = link_to"Word course 03"
+        li = link_to "User" ,'#'
+        li = link_to "Login" ,'#'
