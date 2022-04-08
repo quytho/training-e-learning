@@ -1,0 +1,131 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$light-gray: #777;
+$gray-medium-light: #eaeaea;
+$while: #fff;
+
+html{
+    font-size: 62.5%;
+}
+body {
+    padding-top: 60px;
+}
+section {
+    overflow: auto;
+}
+textarea {
+    resize: vertical;
+}
+.center {
+    text-align: center;
+    
+}
+// header
+.navbar-inverse {
+    background: #000000b8;
+    margin-bottom: 0px;
+    border: none;
+    #logo {
+        float: left;
+        margin-right: 10px;
+        font-size: 1.7rem;
+        color: $while;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        padding-top: 9px;
+        font-weight: bold;
+        &:hover {
+            color: rgb(255, 40, 40);
+            text-decoration: none;
+        }
+    }
+    .navbar-nav li a {
+        color: $while;
+        &:hover {
+            color: #333;
+        }
+    }
+    .drop_link_to {
+        background: #fff;
+        li a {
+            color: #000000b8;
+            &:hover {
+            background: #000000b8;
+            color: #fff;
+            }
+        }
+    }
+}
+
+section{
+    margin-top: -8px;
+    .container{
+        background: #EFEFEF;
+        .introduction{
+            margin-top: 20px;
+
+            img{
+                display: block; 
+                margin-left: auto; 
+                margin-right: auto;
+            }
+            h1{
+                text-align: center;
+            }
+            p{
+                font-size: 2rem;
+            }
+        }
+        .level{
+            p{
+                font-size: 1.6rem;
+            }
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            .level_item{
+                min-width: 500px;
+            }
+        }
+    }
+}
+
+footer {
+    padding: 10px;
+    border-top: 1px solid #eaeaea;
+    color: #fff;
+    background: #000000b8;;
+    height: 40px;
+    small {
+        float: left;
+        a {
+            color: rgb(253, 0, 0);
+            text-decoration: none;
+            &:hover {
+                color: rgb(253, 0, 0);
+                opacity: 0.8;
+            }
+        }
+    }
+    ul {
+        float: right;
+        list-style: none;
+        li {
+            float: left;
+            margin-left: 15px;
+            a {
+                color: #fff;
+                &:hover {
+                    color: #fff;
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+@mixin box_sizing {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
