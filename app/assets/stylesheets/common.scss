@@ -1,3 +1,33 @@
-// p {
-//   color: red;
-// }
+@import "bootstrap";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+ul {
+    margin-bottom: 0;
+}
