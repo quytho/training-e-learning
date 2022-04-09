@@ -1,0 +1,23 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//Side nav
+.sidebar-sticky {
+    position: sticky;
+    top: 55px;
+    height: calc(100vh - 55px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.nav {
+    &-link {
+        color: #333;
+        font-size: 16px;
+
+        .oi {
+            margin-right: 10px;
+        }
+    }
+}
