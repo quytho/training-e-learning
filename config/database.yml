@@ -1,16 +1,16 @@
 default: &default
-    adapter: postgresql
-    host: 127.0.0.1
-    pool: 5
-    username: root
-    password: password
-    reconnect: false
-    encoding: utf8
+  adapter: postgresql
+  host: 127.0.0.1
+  pool: 5
+  username: root
+  password: password
+  reconnect: false
+  encoding: utf8
 
 development:
-    <<: *default
-    database: shop_development
+  <<: *default
+  database: shop_development
 
 test:
-    <<: *default
-    database: shop_test
+  <<: *default
+  database: shop_test
