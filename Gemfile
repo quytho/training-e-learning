@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '6.0.1'
-gem'bootstrap-sass','3.4.1'
+gem 'bootstrap','4.3.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'

@@ -14,4 +14,3 @@ development:
 test:
   <<: *default
   database: shop_test
-
