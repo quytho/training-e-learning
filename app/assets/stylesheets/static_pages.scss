@@ -2,8 +2,10 @@ $light-gray: #777;
 $gray-medium-light: #eaeaea;
 $white: #fff;
 $header-height: 55px;
-
-// Header
+.main {
+    padding-top: $header-height;
+    min-height: 630px;
+}
 .navbar {
     height: $header-height;
     .logo {
@@ -17,12 +19,10 @@ $header-height: 55px;
         }
     }
 }
-
 section {
     padding-top: $header-height;
     padding-bottom: 20px;
     background: #efefef;
-
     .introduction {
         img {
             margin: 20px auto;
@@ -50,13 +50,11 @@ section {
         }
     }
 }
-
 footer {
     padding: 10px;
     color: #fff;
     background: #000000b8;
     height: 40px;
-
     ul {
         list-style: none;
         display: flex;
