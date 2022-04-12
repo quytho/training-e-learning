@@ -58,6 +58,7 @@ GEM
       zeitwerk (~> 2.2)
     autoprefixer-rails (10.4.2.0)
       execjs (~> 2)
+    bcrypt (3.1.7)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     bootstrap (4.3.1)
@@ -136,6 +137,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (6.0.1)
       actionpack (= 6.0.1)
       activesupport (= 6.0.1)
@@ -194,6 +200,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt
   bootstrap (= 4.3.1)
   byebug
   coffee-rails
@@ -202,6 +209,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 6.0.1)
+  rails_12factor
   sass-rails
   slim-rails
   spring
