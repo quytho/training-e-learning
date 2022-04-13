@@ -1,5 +1,7 @@
 .container
-  h1 = @course.name
-  / - @lessons.each do |lesson|
-  = render @lessons
+  .card.mt-3
+    .card-header
+      h2.text-center.mb-0 = @course.name
+    .list-group.list-group-flush
+      = render @lessons
     
