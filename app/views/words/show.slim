@@ -1,16 +1,14 @@
 .container
-  #carouselExampleIndicators.carousel.slide data-ride="carousel" 
-    ol.carousel-indicators
-      li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
-      li data-slide-to="1" data-target="#carouselExampleIndicators" 
-      li data-slide-to="2" data-target="#carouselExampleIndicators" 
-    .carousel-inner
-      .carousel-item.bg-light.active
-        .w-100:h1 123
-      .carousel-item.bg-light
-        .w-100:h1 2
-      .carousel-item.bg-light
-        .w-100:h1 3
+  #carouselExampleIndicators.carousel.slide.mt-5 data-ride="carousel" data-wrap="false" data-interval="false"
+    .carousel-inner.text-white
+      - @words.each_with_index do |word, index| 
+        .carousel-item.bg-dark.py-5 class="#{index == 0 ? 'active' : ''}"
+          .w-100.h-100.text-center
+            h1 = word.en_word
+            p = word.vi_word
+            p = word.description
+            img.mx-auto src="https://source.unsplash.com/featured/?#{word.en_word}" width="200" height="200"
+      
     a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button" 
       span.carousel-control-prev-icon aria-hidden="true" 
       span.sr-only Previous
