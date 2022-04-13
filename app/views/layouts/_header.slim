@@ -1,16 +1,25 @@
 header (class ="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
   .container
-    = link_to "E-Learning",'#', class:"logo"
+    = link_to "E-Learning", '#', class:"logo"
     nav (class = "collapse navbar-collapse")
       ul (class ="navbar-nav ml-auto")
-        li.nav-item = link_to "Home" ,'#', class: 'nav-link'
-        li.nav-item = link_to "Course" ,'#', class: 'nav-link'
+        li.nav-item = link_to "Home" , '#', class: 'nav-link'
+        li.nav-item = link_to "Course" , '#', class: 'nav-link'
         li.nav-item.dropdown
           a.dropdown-toggle.nav-link data-toggle="dropdown" href="#"
             | Word list
           div.dropdown-menu
-            = link_to "Word course 01",'#', class: 'dropdown-item'
-            = link_to "Word course 02",'#', class: "dropdown-item"
-            = link_to "Word course 03",'#', class: "dropdown-item"
-        li.nav-item = link_to "User" ,'#', class: 'nav-link'
-        li.nav-item = link_to "Login" ,'#', class: 'nav-link'
+            = link_to "Word course 01", '#', class: 'dropdown-item'
+            = link_to "Word course 02", '#', class: "dropdown-item"
+            = link_to "Word course 03", '#', class: "dropdown-item"
+        - if logged_in?
+          li.nav-item = link_to "User", users_path, class: 'nav-link'
+          li.nav-item.dropdown
+            a.dropdown-toggle.nav-link data-toggle="dropdown" href="#"
+              | Account
+            div.dropdown-menu.text-center
+              = link_to "Profile", '#', class: 'dropdown-item'
+              = link_to "Settings", '#', class: "dropdown-item"
+              = link_to "Log out", logout_path, method:"delete", class: "dropdown-item text-danger"
+        - else
+          li.nav-item = link_to "Login", login_path, class: 'nav-link'
