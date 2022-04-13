@@ -4,6 +4,9 @@ h1.text-center.text-uppercase.mt-5 All users
   ul.users
     - @users.each do |user|
       li
-          = image_tag 'avatar.png', class:'avatar'
+          - if user.image?
+            = image_tag user.image.url
+          - else 
+            = image_tag 'avatar.png', class:'avatar'
           = link_to user.name, user
 = will_paginate
