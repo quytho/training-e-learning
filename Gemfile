@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '6.0.1'
 gem 'bootstrap','4.3.1'
 gem 'bcrypt'
+gem'will_paginate'
+gem'bootstrap-will_paginate'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
