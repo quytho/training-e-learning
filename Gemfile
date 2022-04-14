@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '6.0.1'
 gem 'bootstrap','4.3.1'
 gem 'bcrypt'
+gem 'carrierwave'
+gem 'mini_magick'
 gem'will_paginate'
 gem'bootstrap-will_paginate'
 

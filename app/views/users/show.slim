@@ -1,6 +1,6 @@
 - provide(:title, @user.name)
 .container
   .avatar
-    = image_tag 'avatar.png'
+    = image_tag user_image(@user)
     h1
       = @user.name

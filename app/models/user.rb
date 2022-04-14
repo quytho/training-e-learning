@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :email,length: {maximum:100}, presence: true, format: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
             uniqueness: {case_sensitive:false}
   has_secure_password
+  mount_uploader :image, PictureUploader
   PASSWORD_FORMAT = /\A
     (?=.{8,})          
     (?=.*\d)           
