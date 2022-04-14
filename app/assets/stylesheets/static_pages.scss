@@ -43,43 +43,10 @@ section {
         grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
         grid-gap: var(--gap);
 
-<<<<<<< HEAD
         &_item {
             background-color: $white;
             padding: 15px 10px;
             border-radius: 4px;
-=======
-section{
-    margin-top: -8px;
-    .container{
-        background: #EFEFEF;
-        .introduction{
-            margin-top: 20px;
-
-            img{
-                display: block; 
-                margin-left: auto; 
-                margin-right: auto;
-            }
-            h1{
-                text-align: center;
-            }
-            p{
-                font-size: 2rem;
-            }
-        }
-        .level{
-            padding-bottom: 20px;
-            p{
-                font-size: 1.6rem;
-            }
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            .level_item{
-                min-width: 500px;
-            }
->>>>>>> Show all user
         }
     }
 }

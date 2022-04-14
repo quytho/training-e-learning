@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-<<<<<<< HEAD
   has_many :user_courses
   has_many :user_lessons
   has_many :user_words
@@ -16,10 +15,4 @@ class User < ActiveRecord::Base
     (?=.*\d)           
   /x
   validates :password, length: {:within => 8..40}, format: { with: PASSWORD_FORMAT }
-=======
-    has_many :user_courses
-    has_many :user_lessons
-    has_many :user_words
-    has_many :practices
->>>>>>> Show all user
 end
