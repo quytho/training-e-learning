@@ -10,7 +10,6 @@
         padding-left: 10px;
     }
 }
-// index.slim
 .users {
     list-style: none;
     padding-left: 0;
@@ -22,7 +21,7 @@
         border-bottom: 1px solid #e9e9e9;
         img {
             width: 50px;
-            object-fit: contain;
+            height: 50px;
         }
         a {
             font-size: 26px;
@@ -37,5 +36,12 @@
         &:last-child {
             border: none;
         }
+    }
+}
+.pagination{
+    font-size: 20px;
+    justify-content: center;
+    a{
+        padding: 0 8px !important;
     }
 }
