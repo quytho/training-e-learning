@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     def get_course
       @course = Course.find_by_id(params[:id])
       if @course.present?
-        return @course
+        @course
       else
         flash[:danger] = "Could not found this course"
         redirect_to courses_path
