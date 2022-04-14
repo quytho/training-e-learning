@@ -3,4 +3,5 @@
     .card-header
       h2.text-center.mb-0 = @course.name
     .list-group.list-group-flush
-      = render @lessons
+      - @course.lessons.each do |lesson|
+        = link_to "#{lesson.name}", skill_path(lesson_id: lesson.id),class:"list-group-item list-group-item-action"
