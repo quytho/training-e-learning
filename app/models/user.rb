@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     (?=.{8,})          
     (?=.*\d)           
   /x
-  validates :password, length: {:within => 8..40}, format: { with: PASSWORD_FORMAT }
+  validates :password, length: {:within => 8..40}, format: { with: PASSWORD_FORMAT }, allow_blank: false
 
   class << self
     def digest(string)
