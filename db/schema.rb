@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_070738) do
+ActiveRecord::Schema.define(version: 2022_04_13_044500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_courses_on_user_id"
+    t.text "description"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -102,7 +101,6 @@ ActiveRecord::Schema.define(version: 2022_04_14_070738) do
     t.index ["lesson_id"], name: "index_words_on_lesson_id"
   end
 
-  add_foreign_key "courses", "users"
   add_foreign_key "lessons", "courses"
   add_foreign_key "practices", "lessons"
   add_foreign_key "practices", "users"
