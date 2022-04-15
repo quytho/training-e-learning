@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   post'login'=>'sessions#create'
   delete'logout'=>'sessions#destroy'
   resources :users
+  resources :courses do
+    resources :lessons
+  end
+
+  get 'skill' => 'words#show'
 end
