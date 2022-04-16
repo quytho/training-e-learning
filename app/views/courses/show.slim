@@ -1,7 +1,11 @@
 .container
-  .card.mt-3
-    .card-header
-      h2.text-center.mb-0 = @course.name
-    .list-group.list-group-flush
-      - @course.lessons.each do |lesson|
-        = link_to "#{lesson.name}", skill_path(lesson_id: lesson.id),class:"list-group-item list-group-item-action"
+  .row.mt-3
+    .col-md-9
+      h2 Lesson List
+      ul.list-group.mt-3
+        - @course.lessons.each do |lesson|
+          = link_to "#{lesson.name}", learning_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action"
+    .col-md-3.text-center
+      h1 = @course.name
+      p = @course.description
+      = checkCourseLearned(@course)
