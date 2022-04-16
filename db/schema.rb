@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 2022_04_13_044500) do
     t.boolean "is_admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   create_table "words", force: :cascade do |t|
