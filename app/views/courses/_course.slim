@@ -2,4 +2,4 @@
   h2 = course.name
   p = course.description
   = link_to "View more", course, class:"btn btn-primary"
-  
+  .badge.badge-secondary = checkCourseLearned(course)

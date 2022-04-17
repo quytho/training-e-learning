@@ -1,11 +1,14 @@
-.container
-  .row.mt-3
-    .col-md-9
-      h2 Lesson List
-      ul.list-group.mt-3
+.row.my-3
+  .col-md-9
+    h2 Lesson List
+    ul.list-group.mt-3
+      - if @course.lessons.present? 
         - @course.lessons.each do |lesson|
           = link_to "#{lesson.name}", learning_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action"
-    .col-md-3.text-center
-      h1 = @course.name
-      p = @course.description
-      = checkCourseLearned(@course)
+      - else
+        p.text-center.text-secondary Couldn't find any lessons
+  .col-md-3.course-sticky
+    h1 = @course.name
+    p = @course.description
+    = link_to checkCourseLearned(@course),'#', remote: true, class:"btn btn-primary"
+    p.mt-3 Progress: #{current_user.user_lessons.count} / #{@course.lessons.length}
