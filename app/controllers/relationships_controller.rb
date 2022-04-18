@@ -4,12 +4,20 @@ class RelationshipsController < ApplicationController
 
   def create
     @user = User.find(params[:followed_id])
+    if @user.blank?
+      flash[:danger] = "User not found"
+      redirect_to users_path
+    end
     current_user.follow(@user)
     redirect_to @user
   end
 
   def destroy
     @user = Relationship.find(params[:id]).followed
+    if @user.blank?
+      flash[:danger] = "User not found"
+      redirect_to users_path
+    end
     current_user.unfollow(@user)
     redirect_to @user
   end
