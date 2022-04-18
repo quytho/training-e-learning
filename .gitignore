@@ -18,3 +18,5 @@
 /test
 /config/database.yml
 .byebug_history
+Gemfile.lock
+/app/assets/javascript/*.coffee
