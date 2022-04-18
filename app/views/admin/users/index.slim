@@ -1,4 +1,4 @@
-
+- provide(:title, 'Admin - User')
 table.table
   thead
     tr
@@ -14,4 +14,5 @@ table.table
           td = user.name
           td = user.email
           td = link_to 'delete', admin_user_path(user), :method => :delete, data: {:confirm => "You sure?" },
-                :title => "Delete #{user.name}"
+                :title => "Delete #{user.name}", class: "btn btn-danger"
+= will_paginate @users
