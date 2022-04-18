@@ -1,0 +1,17 @@
+
+table.table
+  thead
+    tr
+      th scope="col"  ID
+      th scope="col"  Name
+      th scope="col"  Email
+      th scope="col"  Action
+  tbody
+    - @users.each do |user|
+      - if !user.is_admin
+        tr
+          td = user.id
+          td = user.name
+          td = user.email
+          td = link_to 'delete', admin_user_path(user), :method => :delete, data: {:confirm => "You sure?" },
+                :title => "Delete #{user.name}"
