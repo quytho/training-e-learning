@@ -8,6 +8,12 @@ class CoursesController < ApplicationController
   def show
   end
 
+  def words
+    get_course
+    @words = @course.words
+    render 'words'
+  end
+  
   private
     def get_course
       @course = Course.includes(:lessons)

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_04_15_032223) do
+=======
+ActiveRecord::Schema.define(version: 2022_04_18_035557) do
+>>>>>>> Words list course
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +103,8 @@ ActiveRecord::Schema.define(version: 2022_04_15_032223) do
     t.bigint "lesson_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_words_on_course_id"
     t.index ["lesson_id"], name: "index_words_on_lesson_id"
   end
 
@@ -111,5 +117,6 @@ ActiveRecord::Schema.define(version: 2022_04_15_032223) do
   add_foreign_key "user_lessons", "users"
   add_foreign_key "user_words", "users"
   add_foreign_key "user_words", "words"
+  add_foreign_key "words", "courses"
   add_foreign_key "words", "lessons"
 end
