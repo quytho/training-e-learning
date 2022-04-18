@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :lessons
   end
   get 'skill' => 'words#show'
-  resources :admin
+  resources :admin do
+    resources :admin_users
+  end
 end
