@@ -1,0 +1,9 @@
+h1.text-center Lesson
+.row
+  .col-md-6.mx-auto.my-3
+    = form_for([:admin, @lesson]) do |f|
+      = render'shared/error_messages',object: f.object
+      = f.label :name
+      = f.text_field:name, class:'form-control'
+      = f.select :course_id, @courses.collect {|u| [ u.name, u.id ] }, class:"mt-5 lesson-select"
+      = f.submit"Add lesson", class:"btn btn-primary btn_submit mt-4 btn-submit"
