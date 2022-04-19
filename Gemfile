@@ -32,6 +32,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "slim-rails"
+gem "config"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
