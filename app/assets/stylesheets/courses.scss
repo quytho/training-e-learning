@@ -28,9 +28,64 @@
   height: 100%;
   text-align: center;
 }
-// show course/id
-.lesson-item:hover {
-  color: #777;
-  border-radius: 4px;
-  border-color: #777;
+
+// Words List
+.words_list {
+  display: grid;
+  --columns: 7;
+  --gap: 4px;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  grid-gap: var(--gap);
+  .words_list-item {
+    background: #343a40;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    .btn-words-list-item:focus {
+      outline: 0;
+    }
+  }
+  .word_list-info {
+    position: fixed;
+    right: 50%;
+    top: 10%;
+    transform: translateX(50%);
+    width: 400px;
+    height: 200px;
+    background: #343a40;
+    color: #fff;
+    padding: 0 12px;
+    border-radius: 4px;
+    display: none;
+    .word_list_vi-word {
+      margin-bottom: 4px;
+    }
+    .word_list-close {
+      position: absolute;
+      top: 4px;
+      right: 16px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+        color: rgb(255, 0, 0);
+      }
+    }
+    .btn-done {
+      position: absolute;
+      bottom: 10px;
+      right: 16px;
+    }
+  }
+  .active {
+    display: block;
+  }
+
+  // show course/id
+  .lesson-item:hover {
+    color: #777;
+    border-radius: 4px;
+    border-color: #777;
+  }
 }
