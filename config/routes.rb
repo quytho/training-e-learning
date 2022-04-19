@@ -8,16 +8,10 @@ Rails.application.routes.draw do
   delete'logout'=>'sessions#destroy'
   resources :users
   resources :password_resets, only: [:new, :create, :edit, :update]
-<<<<<<< HEAD
-  resources :courses
-
-  get 'learning' => 'words#show'
-=======
   resources :courses do 
     member do 
       get :words
     end
   end
-  get 'skill' => 'words#show'
->>>>>>> Words list course
+  get 'learning' => 'words#show'
 end

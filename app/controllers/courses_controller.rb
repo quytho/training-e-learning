@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :get_course, only: [:show]
+  before_action :get_course, only: [:show, :words]
 
   def index
     @courses = Course.all
@@ -9,7 +9,6 @@ class CoursesController < ApplicationController
   end
 
   def words
-    get_course
     @words = @course.words
     render 'words'
   end
