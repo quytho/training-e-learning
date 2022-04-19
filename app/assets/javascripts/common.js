@@ -4,7 +4,7 @@ $(document).ready(function () {
     $.ajax({
       method: "post",
       url: "/relationships",
-      data: { followed_id: followedId },
+      data: { id: followedId },
     });
   });
   $(document).on("click", ".btn-unfollow", function () {
