@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :courses
   resources :user_course
-  
   get 'learning' => 'words#show'
+  resources :admin
 end
