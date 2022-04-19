@@ -28,6 +28,7 @@
   height: 100%;
   text-align: center;
 }
+
 // Words List
 .words_list {
   display: grid;
@@ -80,4 +81,10 @@
   .active {
     display: block;
   }
+  
+// show course/id
+.lesson-item:hover {
+  color: #777;
+  border-radius: 4px;
+  border-color: #777;
 }

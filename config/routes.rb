@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get :words
     end
   end
+  resources :user_course
   get 'learning' => 'words#show'
   resources :admin
 end
