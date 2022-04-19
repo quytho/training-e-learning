@@ -4,11 +4,11 @@
     ul.list-group.mt-3
       - if @course.lessons.present? 
         - @course.lessons.each do |lesson|
-          = link_to "#{lesson.name}", learning_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action"
+          = link_to "#{lesson.name}", learning_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action #{check_register_course(@course)} lesson-item"
       - else
         p.text-center.text-secondary Couldn't find any lessons
   .col-md-3.course-sticky
     h1 = @course.name
     p = @course.description
-    = link_to checkCourseLearned(@course),'#', remote: true, class:"btn btn-primary"
+    = button_tag check_course_learned(@course), class:"btn btn-primary btn-register",data: {course_id: @course.id, user_id: current_user.id} 
     p.mt-3 Progress: #{current_user.user_lessons.count} / #{@course.lessons.length}
