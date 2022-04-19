@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
   before_action :get_course, only: [:show, :words]
-
   def index
     @courses = Course.all
   end
