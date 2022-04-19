@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   end
   resources :user_course
   get 'learning' => 'words#show'
-  resources :admin
+  get 'admin' => 'admin#index'
+  namespace :admin do
+    resources :users
+  end
 end
