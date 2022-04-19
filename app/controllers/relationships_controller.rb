@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    @user = Relationship.find(params[:id]).followed
+    @user = User.find(params[:id])
     if @user.blank?
       flash[:danger] = "User not found"
       redirect_to users_path

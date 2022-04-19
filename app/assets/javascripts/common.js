@@ -8,10 +8,10 @@ $(document).ready(function () {
     });
   });
   $(document).on("click", ".btn-unfollow", function () {
-    var relationshipId = $(this).data("relationship-id");
+    var followedId = $(this).data("followed-id");
     $.ajax({
       method: "delete",
-      url: "/relationships/" + relationshipId,
+      url: "/relationships/" + followedId,
     });
   });
 });

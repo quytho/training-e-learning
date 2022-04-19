@@ -10,5 +10,5 @@
   .col-md-3.course-sticky
     h1 = @course.name
     p = @course.description
-    = link_to checkCourseLearned(@course),'#', remote: true, class:"btn btn-primary"
+    = link_to check_course_learned(@course),'#', remote: true, class:"btn btn-primary"
     p.mt-3 Progress: #{current_user.user_lessons.count} / #{@course.lessons.length}
