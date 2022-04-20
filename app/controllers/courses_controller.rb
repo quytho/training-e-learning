@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :get_course, only: [:show]
+  before_action :get_course, only: [:show, :words]
   def index
     @courses = Course.all
   end
@@ -7,6 +7,11 @@ class CoursesController < ApplicationController
   def show
   end
 
+  def words
+    @words = @course.words
+    render 'words'
+  end
+  
   private
     def get_course
       @course = Course.includes(:lessons)
