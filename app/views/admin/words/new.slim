@@ -1,0 +1,16 @@
+h1.text-center Word
+.row
+  .col-md-6.mx-auto.my-3
+    = form_for([:admin, @word]) do |f|
+      = render'shared/error_messages',object: f.object
+      = f.label "Word English"
+      = f.text_field:en_word, class:'form-control'
+      = f.label "Word Vietname"
+      = f.text_area:vi_word, class:'form-control'
+      = f.label :description
+      = f.text_area:description, class:'form-control'
+      #course.mt-4.form-group
+        = f.select :course_id, @courses.collect {|u| [ u.name, u.id ] }, { include_blank: true }
+      #lesson.mt-4.form-group
+        = f.select :lesson_id, @lessons.collect {|u| [ u.name, u.id ] }
+      = f.submit"Add word", class:"btn btn-primary btn_submit mt-4 btn-submit"

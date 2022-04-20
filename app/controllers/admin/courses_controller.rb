@@ -1,9 +1,9 @@
 class Admin::CoursesController < ApplicationController
   layout 'layouts/admin'
-  before_action :get_courseId, only:[:edit, :update, :destroy]
+  before_action :get_course, only:[:edit, :update, :destroy]
 
   def index
-    @courses = Course.paginate(page: params[:page], per_page: 10)
+    @courses = Course.paginate(page: params[:page], per_page: Settings.paginate)
   end
 
   def new
@@ -16,7 +16,8 @@ class Admin::CoursesController < ApplicationController
       flash[:success] = "Add success"
       redirect_to admin_courses_path
     else
-      redirect_to  new_admin_course_path
+      flash[:danger] = "Add fail"
+      render  new_admin_course_path
     end
   end
 
@@ -28,25 +29,31 @@ class Admin::CoursesController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to admin_courses_path
     else
-      render edit_admin_course_path
+      flash[:danger] = "Profile update fail"
+      render admin_courses_path
     end
   end
 
   def destroy
-    @course.destroy
-    flash[:success] = "Delete success"
-    redirect_to admin_courses_path
+    if @course.destroy
+      flash[:success] = "Delete success"
+      redirect_to admin_courses_path
+    else
+      flash[:danger] = "Delete fail"
+      render admin_courses_path
+    end
   end
 
   private
-    def course_params
-      params.require(:course).permit(:name, :description)
-    end
 
-    def get_courseId
-      @course = Course.find_by_id(params[:id])
-      return if @course
-      flash[:danger] = "User not found"
-      redirect_to admin_courses_path
-    end
+  def course_params
+    params.require(:course).permit(:name, :description)
+  end
+
+  def get_course
+    @course = Course.find_by_id(params[:id])
+    return if @course
+    flash[:danger] = "User not found"
+    redirect_to admin_courses_path
+  end
 end

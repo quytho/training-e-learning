@@ -4,4 +4,5 @@ class Lesson < ActiveRecord::Base
   has_many    :user_words
   has_many    :words
   scope :order_name, -> { order(name: :ASC)}
+  validates :name, uniqueness: true, presence: true
 end
