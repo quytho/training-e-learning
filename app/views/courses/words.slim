@@ -2,11 +2,10 @@
   h3.text-center.my-4 Words #{@course.name}
   .words_list 
     - @words.each do |word|
-      .words_list-item 
-        = button_tag "#{word.en_word}", class: "btn btn-dark btn-words-list-item",data: {id: word.id}  
+      = button_tag "#{word.en_word}", class: "btn words_list-item btn-words-list-item #{check_user_word(word)}",data: {id: word.id}  
       .word_list-info class="info_word-list-#{word.id}"
         h4.word_list-title.my-3.border-bottom = word.en_word
         p.word_list_vi-word = word.vi_word
         span.word_list-description = word.description
         span.word_list-close data={id: word.id}   x
-        = button_tag "Done", class:"btn btn-success btn-done"
+        = check_done_word(word)

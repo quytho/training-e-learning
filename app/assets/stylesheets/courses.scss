@@ -42,9 +42,10 @@
     color: #fff;
     cursor: pointer;
     border-radius: 4px;
-    .btn-words-list-item:focus {
-      outline: 0;
-    }
+  }
+  .active-done {
+    background-color: #13aa52;
+    color: #fff;
   }
   .word_list-info {
     position: fixed;
@@ -81,10 +82,11 @@
   .active {
     display: block;
   }
-  
-// show course/id
-.lesson-item:hover {
-  color: #777;
-  border-radius: 4px;
-  border-color: #777;
+
+  // show course/id
+  .lesson-item:hover {
+    color: #777;
+    border-radius: 4px;
+    border-color: #777;
+  }
 }
