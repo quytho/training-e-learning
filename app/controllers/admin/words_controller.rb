@@ -1,4 +1,4 @@
-class Admin::WordsController < ApplicationController
+class Admin::WordsController < AdminController
   layout 'layouts/admin'
   before_action :get_word, only:[:edit, :update, :destroy]
 
@@ -9,10 +9,7 @@ class Admin::WordsController < ApplicationController
   def new
     @word = Word.new
     @courses = Course.all
-    @lessons = []
-    if params[:course_id].present?
-      @lessons = Course.find(params[:course_id]).lessons
-    end
+    @lessons = Lesson.where(course_id: params[:course_id])
     if request.xhr?
       respond_to do |format|
         format.json {
@@ -36,7 +33,6 @@ class Admin::WordsController < ApplicationController
 
   def edit
     @courses = Course.all
-    @lessons = []
     @lessons = Lesson.where(course_id: params[:course_id])
     if request.xhr?
       format.json {
