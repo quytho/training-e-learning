@@ -12,6 +12,5 @@ table.table
         td = user.id
         td = user.name
         td = user.email
-        td = link_to 'Delete', admin_user_path(user), method:"delete", data: {:confirm => "You sure?" },
-              :title => "Delete #{user.name}", class: "btn btn-danger"
+        td = link_to 'Delete', admin_user_path(user), method:"delete", data: {:confirm => "You sure?" }, class: "btn btn-danger"
 = will_paginate @users
