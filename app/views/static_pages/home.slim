@@ -10,19 +10,8 @@ section.container
         trong thời gian ngắn nhất có thể.
     p: strong Mời các bạn bấm vào các nút bên dưới và xem hướng dẫn để học.
   .level
-    .level_item.text-center
-      h2 Cấp độ 1
-      p Những từ vững mà ai cũng phải biết khi bắt đầu học TOEIC (150 từ)
-      = link_to "Learn level 1",'#',class:"btn btn-lg btn-primary"
-    .level_item.text-center
-      h2 Cấp độ 2
-      p Những từ vững thông dụng trong giải đề (200 từ)
-      = link_to "Learn level 2",'#',class:"btn btn-lg btn-primary"
-    .level_item.text-center
-      h2 Cấp độ 3
-      p Những từ vững nâng cao trong TOEIC (200 từ)
-      = link_to "Learn level 3",'#',class:"btn btn-lg btn-primary"
-    .level_item.text-center
-      h2 Cấp độ 4
-      p Hoàn thiện từ vừng còn lại trong TOEIC (250 từ)
-      = link_to "Learn level 4",'#',class:"btn btn-lg btn-primary"
+    - Course.all.each do |course|
+      .level_item.text-center
+        h2 = course.name
+        p Những từ vững mà ai cũng phải biết khi bắt đầu học TOEIC (#{course.description})
+        = link_to "View more", course, class:"btn btn-lg btn-primary"

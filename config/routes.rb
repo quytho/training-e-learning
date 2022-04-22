@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :user_course
+  resources :user_word
   get 'admin' => 'admin#index'
   namespace :admin do
     resources :users
