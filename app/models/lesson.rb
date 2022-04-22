@@ -3,4 +3,5 @@ class Lesson < ActiveRecord::Base
   has_one     :practice
   has_many    :user_words
   has_many    :words
+  scope :order_name, -> { order(name: :ASC)}
 end

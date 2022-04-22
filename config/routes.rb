@@ -6,15 +6,26 @@ Rails.application.routes.draw do
   get'login'=>'sessions#new'
   post'login'=>'sessions#create'
   delete'logout'=>'sessions#destroy'
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  get 'learning' => 'lessons#index'
+  get 'learning/test' => 'lessons#test'
   resources :courses do 
-    member do 
+    member do
       get :words
     end
   end
   resources :user_course
   resources :user_word
-  get 'learning' => 'words#show'
-  resources :admin
+  get 'admin' => 'admin#index'
+  namespace :admin do
+    resources :users
+    resources :courses
+    resources :lessons
+  end
 end

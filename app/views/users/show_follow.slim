@@ -1,0 +1,18 @@
+- provide(:title, @title)
+.row
+  .col-md-4
+    section.user_info
+      h1= @user.name
+      span= link_to "view my profile", @user
+    section.stats
+      = render 'shared/stats'
+      - if @users.any?
+        .user_avatars
+          - @users.each do |user|
+            = user.name
+  .col-md-8
+    h3= @title
+    - if @users.any?
+      ul.users.follow
+        = render @users
+      = will_paginate

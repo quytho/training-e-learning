@@ -8,6 +8,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem'will_paginate'
 gem'bootstrap-will_paginate'
+gem "kaminari"
+gem 'popper_js'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
@@ -32,6 +34,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "slim-rails"
+gem "config"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

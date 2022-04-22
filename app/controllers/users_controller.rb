@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :get_user, only:[:show, :edit, :update]
+  before_action :get_user, except: [:new, :create, :index]
+  before_action :logged_in_user, except: [:new, :create, :show]
   def index
     @users = User.paginate(page: params[:page], per_page: 15)
   end
@@ -33,6 +34,19 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  def following
+    @title = "Following"
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
   private 
     def user_params 
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)

@@ -8,8 +8,13 @@ class CoursesController < ApplicationController
   end
 
   def words
-    @words = @course.words
-    render :words
+    if logged_in?
+      @words = @course.words
+      render :words
+    else
+      flash[:danger] = "Please login before viewing the list of words"
+      redirect_to login_path
+    end
   end
   
   private
