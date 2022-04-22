@@ -15,6 +15,5 @@ table.table
         td = course.description
         td
           = link_to "edit", edit_admin_course_path(course), class: "btn btn-warning mr-2"
-          = link_to 'delete', admin_course_path(course), :method => :delete, data: {:confirm => "You sure?" },
-              :title => "Delete #{course.name}", class: "btn btn-danger"
+          = link_to 'delete', admin_course_path(course), method:"delete", data: {:confirm => "You sure?" }, class: "btn btn-danger"
 = will_paginate @courses

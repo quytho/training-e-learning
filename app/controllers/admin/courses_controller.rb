@@ -3,7 +3,7 @@ class Admin::CoursesController < ApplicationController
   before_action :get_course, only:[:edit, :update, :destroy]
 
   def index
-    @courses = Course.paginate(page: params[:page], per_page: Settings.paginate)
+    @courses = Course.order_name.paginate(page: params[:page], per_page: Settings.paginate)
   end
 
   def new
