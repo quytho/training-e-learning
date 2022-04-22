@@ -1,4 +1,19 @@
 $(document).ready(function () {
+  $(document).on("click", ".btn-follow", function () {
+    var followedId = $(this).data("followed-id");
+    $.ajax({
+      method: "post",
+      url: "/relationships",
+      data: { id: followedId },
+    });
+  });
+  $(document).on("click", ".btn-unfollow", function () {
+    var followedId = $(this).data("followed-id");
+    $.ajax({
+      method: "delete",
+      url: "/relationships/" + followedId,
+    });
+  });
 
   $(document).on('click', '.btn-words-list-item', function () {
     var word = $(this).data("id")
