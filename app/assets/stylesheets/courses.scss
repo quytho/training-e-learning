@@ -59,6 +59,12 @@
     padding: 0 12px;
     border-radius: 4px;
     display: none;
+    .sourd-word {
+      display: flex;
+      .btn-sound {
+        align-self: center;
+      }
+    }
     .word_list_vi-word {
       margin-bottom: 4px;
     }
@@ -82,11 +88,20 @@
   .active {
     display: block;
   }
-
   // show course/id
   .lesson-item:hover {
     color: #777;
     border-radius: 4px;
     border-color: #777;
   }
+}
+.get-all-learned,
+.get-all-unlearn {
+  display: none;
+}
+.active-get-all {
+  display: grid;
+}
+.unactive-get-all {
+  display: none;
 }

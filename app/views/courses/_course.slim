@@ -1,5 +1,5 @@
 .course-item
   h2 = course.name
-  p = course.description
+  p Những từ vững mà ai cũng phải biết khi bắt đầu học TOEIC (#{course.description}) 
   = link_to "View more", course, class:"btn btn-primary"
   .badge.badge-secondary = check_course_learned(course)

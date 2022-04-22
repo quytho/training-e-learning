@@ -2,9 +2,14 @@ class UserWordController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    @user_words = UserWord.create(user_word_params)
-    flash[:success] = "Done Successfully"
-    redirect_to request.referrer
+    @user_word = UserWord.new(user_word_params)
+    if @user_word.save
+      flash[:success] = "Done Successfully"
+      redirect_to request.referrer
+    else
+      flash[:danger] = "Done Fail"
+      redirect_to request.referrer
+    end
   end
 
   private 

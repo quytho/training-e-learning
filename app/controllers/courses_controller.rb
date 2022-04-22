@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
 
   def words
     @words = @course.words
-    render 'words'
+    render :words
   end
   
   private
