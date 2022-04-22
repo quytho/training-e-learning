@@ -282,6 +282,7 @@ DEPENDENCIES
   kaminari
   mini_magick
   pg
+  popper_js
   rails (= 6.0.1)
   rails_12factor
   sass-rails

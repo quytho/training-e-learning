@@ -1,18 +1,15 @@
 - provide(:title, @title)
 .row
-  .col-md-4
+  .col-md-4.group-my-info
     section.user_info
-      h1= @user.name
-      span= link_to "view my profile", @user
+      .my-avatar
+        = image_tag user_image(@user)
+        h1.user_info-link = link_to "#{@user.name}", @user
     section.stats
       = render 'shared/stats'
-      - if @users.any?
-        .user_avatars
-          - @users.each do |user|
-            = user.name
   .col-md-8
-    h3= @title
+    h3.text-center.my-4 = @title
     - if @users.any?
-      ul.users.follow
+      ul.user-follow
         = render @users
       = will_paginate
