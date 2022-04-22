@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'learning' => 'lessons#index'
   get 'learning/test' => 'lessons#test'
   resources :courses do 
-    member do 
+    member do
       get :words
     end
   end
@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   get 'admin' => 'admin#index'
   namespace :admin do
     resources :users
+    resources :courses
   end
 end

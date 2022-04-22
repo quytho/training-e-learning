@@ -4,7 +4,7 @@ $(document).ready(function () {
     $.ajax({
       method: "post",
       url: "/relationships",
-      data: { followed_id: followedId },
+      data: { id: followedId },
     });
   });
   $(document).on("click", ".btn-unfollow", function () {
@@ -14,7 +14,7 @@ $(document).ready(function () {
       url: "/relationships/" + followedId,
     });
   });
-  
+
   $(document).on('click', '.btn-words-list-item', function () {
     var word = $(this).data("id")
     var classWord = ".info_word-list" + "-" + word;
@@ -24,7 +24,7 @@ $(document).ready(function () {
     var word = $(this).data("id")
     var classWord = ".info_word-list" + "-" + word;
     $(classWord).removeClass("active");
-   })
+  })
 
   // register the course
   $(document).on('click', '.btn-register', function () {
