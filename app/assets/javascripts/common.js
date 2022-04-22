@@ -35,5 +35,48 @@ $(document).ready(function () {
       url: "/user_course",
       data: { course_id: courseId, user_id: userId }
     })
+  })
+  // Done word
+  $(document).on('click', '.btn-done', function () {
+    var wordId = $(this).data("word-id")
+    var userId = $(this).data("user-id")
+    $.ajax({
+      method: "post",
+      url: "/user_word",
+      data: { word_id: wordId, user_id: userId, is_learned: true }
+    })
+  })
+  // Get all - learn - unlearn 
+  $(document).on('click', '.btn-get-all', function () {
+    if ($('.get-all-unlearn').length) {
+      $('.get-all-unlearn').removeClass("active-get-all")
+    }
+    $('.get-all-learned').removeClass("active-get-all")
+    $('.get-all').removeClass("unactive-get-all")
+  })
+
+  $(document).on('click', '.btn-get-learned', function () {
+    if ($('.get-all-unlearn').length) {
+      $('.get-all-unlearn').removeClass("active-get-all")
+    }
+    $('.get-all-learned').addClass("active-get-all")
+    $('.get-all').addClass("unactive-get-all")
+  })
+
+  $(document).on('click', '.btn-get-unlearn', function () {
+    if ($('.get-all-learned').length) {
+      $('.get-all-learned').removeClass("active-get-all")
+    }
+    $('.get-all-unlearn').addClass("active-get-all")
+    $('.get-all').addClass("unactive-get-all")
+  })
+  // Sound-word
+  $(document).on("click", ".btn-sound", function () {
+    var word = $(this).data("word");
+    var msg = new SpeechSynthesisUtterance();
+    voices = speechSynthesis.getVoices();
+    msg.text = word;
+    msg.rate = 0.7;
+    speechSynthesis.speak(msg);
   });
 });
