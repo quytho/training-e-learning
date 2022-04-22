@@ -35,5 +35,5 @@ $(document).ready(function () {
       url: "/user_course",
       data: { course_id: courseId, user_id: userId }
     })
-  })
+  });
 });
