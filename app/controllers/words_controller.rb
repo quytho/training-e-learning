@@ -1,6 +1,5 @@
 class WordsController < ApplicationController
   before_action :get_lession, only: [:show]
-  
   def show
   end
   

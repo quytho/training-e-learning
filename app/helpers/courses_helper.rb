@@ -4,8 +4,14 @@ module CoursesHelper
       "Get started"
     elsif course.user_courses.find_by(course_id: course.id).is_learned
       "Completed"
-    else
+    else 
       "Continue"
+    end
+  end
+
+  def check_register_course(course)
+    if course.user_courses.blank?
+      'disabled'
     end
   end
 end
