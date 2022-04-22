@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  get 'learning' => 'lessons#index'
-  get 'learning/test' => 'lessons#test'
-  resources :courses do
+  resources :courses do 
     member do
       get :words
     end
@@ -29,4 +27,11 @@ Rails.application.routes.draw do
     resources :lessons
     resources :words
   end
+  resources :learning, controller: 'lessons', only: [:index, :create] do
+    collection do
+      get 'practice'
+      get 'get-word'
+    end
+  end
+  post 'practice' => 'practices#create'
 end

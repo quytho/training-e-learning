@@ -7,4 +7,13 @@ $(document).ready(function () {
     msg.rate = 0.7;
     speechSynthesis.speak(msg);
   });
+
+  $(document).on("click", ".btn-do-practice", function () {
+    var lesson_id = $(this).data("lesson-id");
+    $.ajax({
+      method: "post",
+      url: "/learning",
+      data: { lesson_id: lesson_id },
+    });
+  });
 });

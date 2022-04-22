@@ -4,6 +4,7 @@ $white: #fff;
 $header-height: 55px;
 .main {
   padding-top: $header-height;
+  padding-bottom: 30px;
   min-height: calc(100vh - 40px);
 }
 .navbar {

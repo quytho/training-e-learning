@@ -4,7 +4,7 @@
     ul.list-group.mt-3
       - if @course.lessons.present? 
         - @course.lessons.each do |lesson|
-          = link_to "#{lesson.name}", learning_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action lesson-item #{check_register_course(@course)}"
+          = link_to "#{lesson.name}", learning_index_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action lesson-item #{check_register_course(@course)} #{check_learned_lesson(lesson)}"
       - else
         p.text-center.text-secondary Couldn't find any lessons 
   .col-md-3.course-sticky.p-2.register-course

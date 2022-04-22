@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_035557) do
+ActiveRecord::Schema.define(version: 2022_04_23_163903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2022_04_18_035557) do
     t.integer "score"
     t.bigint "lesson_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["lesson_id"], name: "index_practices_on_lesson_id"
     t.index ["user_id"], name: "index_practices_on_user_id"
   end
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2022_04_18_035557) do
     t.boolean "is_learned", default: false
     t.bigint "word_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["user_id"], name: "index_user_words_on_user_id"
     t.index ["word_id"], name: "index_user_words_on_word_id"
   end
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2022_04_18_035557) do
     t.text "en_word"
     t.text "vi_word"
     t.text "description"
-    t.bigint "lesson_id"
+    t.bigint "lesson_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "course_id", null: false
