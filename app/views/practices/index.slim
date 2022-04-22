@@ -1,0 +1,18 @@
+nav.mt-3 aria-label="breadcrumb" 
+  ol.breadcrumb.bg-light
+    li.breadcrumb-item
+      = link_to "Courses", courses_path
+    li.breadcrumb-item
+      = link_to @lesson.course.name, @lesson.course
+    li.breadcrumb-item.active aria-current="page" = @lesson.name
+    li.breadcrumb-item.active aria-current="page" Practice
+
+form#form_practice autocomplete="off" data={lesson: @lesson.id}
+  - @lesson.words.each_with_index do |word, index|
+    .form-group.row
+        label.col-sm-12.col-md-3 for="ans_#{index+1}" Question #{index+1}: #{word.vi_word}
+        .col-sm-12.col-md-9
+          input.form-control placeholder="Type your answer here..." name="ans_#{index+1}" id="ans_#{index+1}" required="true"
+  .form-group.row
+    .col-md-9.offset-md-3.col-sm-12.offset-sm-0
+      button.btn.btn-primary.btn-submit type="submit" Submit
