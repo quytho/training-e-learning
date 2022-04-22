@@ -1,14 +1,16 @@
 .row.my-3
-  .col-md-9
+  .col-md-8.mr-auto.p-2.register-course
     h2 Lesson List
     ul.list-group.mt-3
       - if @course.lessons.present? 
         - @course.lessons.each do |lesson|
-          = link_to "#{lesson.name}", learning_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action"
+          = link_to "#{lesson.name}", learning_path(lesson_id: lesson.id), class:"list-group-item list-group-item-action lesson-item #{check_register_course(@course)}"
       - else
-        p.text-center.text-secondary Couldn't find any lessons
-  .col-md-3.course-sticky
+        p.text-center.text-secondary Couldn't find any lessons 
+  .col-md-3.course-sticky.p-2.register-course
     h1 = @course.name
-    p = @course.description
-    = link_to check_course_learned(@course),'#', remote: true, class:"btn btn-primary"
-    p.mt-3 Progress: #{current_user.user_lessons.count} / #{@course.lessons.length}
+    h3 Free course
+    = show_button_register_course(@course)
+    p.mt-1 = @course.description
+    p.mt-2 Progress: #{check_progress(@course)}
+    span Study anytime, anywhere

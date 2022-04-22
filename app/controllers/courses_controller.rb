@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :get_course, only: [:show]
-
+  before_action :get_course, only: [:show, :words]
   def index
     @courses = Course.all
   end
@@ -8,6 +7,16 @@ class CoursesController < ApplicationController
   def show
   end
 
+  def words
+    if logged_in?
+      @words = @course.words
+      render :words
+    else
+      flash[:danger] = "Please login before viewing the list of words"
+      redirect_to login_path
+    end
+  end
+  
   private
     def get_course
       @course = Course.includes(:lessons)

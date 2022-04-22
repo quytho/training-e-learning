@@ -5,7 +5,6 @@
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   grid-gap: var(--gap);
 }
-
 .course-item {
   text-align: center;
   padding: 20px;
@@ -28,4 +27,77 @@
   top: calc(60px + 1rem);
   height: 100%;
   text-align: center;
+}
+
+// Words List
+.words_list {
+  display: grid;
+  --columns: 7;
+  --gap: 4px;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  grid-gap: var(--gap);
+  .words_list-item {
+    background: #343a40;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    .btn-words-list-item:focus {
+      outline: 0;
+    }
+  }
+  .word_list-info {
+    position: fixed;
+    right: 50%;
+    top: 10%;
+    transform: translateX(50%);
+    width: 400px;
+    height: 200px;
+    background: #343a40;
+    color: #fff;
+    padding: 0 12px;
+    border-radius: 4px;
+    display: none;
+    .word_list_vi-word {
+      margin-bottom: 4px;
+    }
+    .word_list-close {
+      position: absolute;
+      top: 4px;
+      right: 16px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+        color: rgb(255, 0, 0);
+      }
+    }
+    .btn-done {
+      position: absolute;
+      bottom: 10px;
+      right: 16px;
+    }
+  }
+  .active {
+    display: block;
+  }
+}
+// show course/id
+.lesson-item:hover {
+  color: #444;
+  border-radius: 4px;
+  border-color: #777;
+
+}
+.register-course {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  .Continue {
+    pointer-events: none;
+    cursor: default;
+    border: none;
+    background-image: linear-gradient(-180deg, #ff7e31, #e62c03);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #fff;
+  }
 }
