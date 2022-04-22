@@ -9,7 +9,7 @@ gem 'mini_magick'
 gem'will_paginate'
 gem'bootstrap-will_paginate'
 gem "kaminari"
-
+gem 'popper_js'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'

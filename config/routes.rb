@@ -13,13 +13,14 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :courses do
+  get 'learning' => 'lessons#index'
+  get 'learning/test' => 'lessons#test'
+  resources :courses do 
     member do
       get :words
     end
   end
   resources :user_course
-  get 'learning' => 'words#show'
   get 'admin' => 'admin#index'
   namespace :admin do
     resources :users
