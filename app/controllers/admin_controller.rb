@@ -2,6 +2,10 @@ class AdminController < ApplicationController
   before_action :check_permission, only: [:index]
 
   def index
+    @user = User.count
+    @course = Course.count
+    @lesson = Lesson.count
+    @word = Word.count
   end
 
   private

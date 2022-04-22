@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :reset_token
-  
+
   has_many :user_courses
   has_many :user_lessons
   has_many :user_words
@@ -13,14 +13,15 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   before_save {self.email = email.downcase }
-  validates :name,length: {maximum:50},presence:true
+  scope :order_name, -> { order(name: :ASC)}
+  validates :name,length: {maximum:50}, presence:true
   validates :email,length: {maximum:100}, presence: true, format: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
             uniqueness: {case_sensitive:false}
   has_secure_password
   mount_uploader :image, PictureUploader
   PASSWORD_FORMAT = /\A
-    (?=.{8,})          
-    (?=.*\d)           
+    (?=.{8,})
+    (?=.*\d)
   /x
   validates :password, length: {:within => 8..40}, format: { with: PASSWORD_FORMAT }, allow_blank: false
 
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
         BCrypt::Password.create(string,cost: cost)
     end
 
-    def new_token 
+    def new_token
         SecureRandom.urlsafe_base64
     end
   end
@@ -54,7 +55,7 @@ class User < ActiveRecord::Base
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
-  
+
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
