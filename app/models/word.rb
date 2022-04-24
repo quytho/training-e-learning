@@ -4,4 +4,5 @@ class Word < ActiveRecord::Base
     belongs_to  :course
     validates :en_word, presence: true, uniqueness: true
     validates :vi_word, presence: true
+    scope :oder_by_name_word, -> { order(en_word: :ASC)}
 end

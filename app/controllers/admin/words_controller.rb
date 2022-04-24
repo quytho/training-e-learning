@@ -1,9 +1,8 @@
 class Admin::WordsController < AdminController
-  layout 'layouts/admin'
   before_action :get_word, only:[:edit, :update, :destroy]
 
   def index
-    @words = Word.paginate(page: params[:page], per_page: Settings.paginate)
+    @words = Word.oder_by_name_word.paginate(page: params[:page], per_page: Settings.paginate)
   end
 
   def new

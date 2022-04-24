@@ -6,14 +6,16 @@ table.table
       th scope="col"  English
       th scope="col"  VietName
       th scope="col"  Description
+      th scope="col"  Name Course
       th scope="col"  Action
   tbody
-    - @words.each do |word|
+    - @words.each_with_index do |word, index|
       tr
-        td = word.id
+        td = create_index params[:page], index, Settings.paginate
         td = word.en_word
         td = word.vi_word
         td = word.description
+        td = word.course.name
         td
           = link_to "edit", edit_admin_word_path(word), class: "btn btn-warning mr-2"
           = link_to 'delete', admin_word_path(word), method:"delete", data: {:confirm => "You sure?" }, class: "btn btn-danger"
