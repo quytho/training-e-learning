@@ -5,9 +5,9 @@ class PracticesController < ApplicationController
   end
 
   def create
-    practice = @lesson.practice
+    practice = current_user.practices.find_by(lesson_id: @lesson.id)
     if practice.blank?
-      @practice =  Practice.new(practice_params)
+      @practice = Practice.new(practice_params)
       @practice.save
     elsif practice.score < params[:score].to_i
       practice.score = params[:score]

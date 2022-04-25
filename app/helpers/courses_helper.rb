@@ -14,6 +14,12 @@ module CoursesHelper
       'disabled'
     end
   end
+
+  def check_learned_lesson(lesson)
+    if current_user && current_user.user_lessons.find_by(lesson_id: lesson.id).present?
+      'list-group-item-success'
+    end
+  end
   
   def show_button_register_course(course)
     if current_user

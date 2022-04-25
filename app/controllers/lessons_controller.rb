@@ -14,6 +14,11 @@ class LessonsController < ApplicationController
       end
     end
 
+    @user_lesson = UserLesson.new(userlesson_params)
+    if current_user.user_lessons.find_by(lesson_id: @lesson.id).blank?
+      @user_lesson.save
+    end
+
     redirect_to learning_practice_path(lesson_id: @lesson.id)
   end
 
@@ -29,5 +34,10 @@ class LessonsController < ApplicationController
         flash[:danger] = "The lesson is not available"
         redirect_to courses_path
       end
+    end
+
+    def userlesson_params 
+      defaults = { user_id: current_user.id }
+      params.permit(:lesson_id, :user_id).reverse_merge(defaults)
     end
 end
