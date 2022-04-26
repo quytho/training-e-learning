@@ -16,9 +16,15 @@ header (class ="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
           li.nav-item.dropdown
             a.dropdown-toggle.nav-link data-toggle="dropdown" href="#"
               | Account
-            div.dropdown-menu.text-center
-              = link_to "Profile", current_user, class: 'dropdown-item'
-              = link_to "Settings", edit_user_path(current_user), class: "dropdown-item"
-              = link_to "Log out", logout_path, method:"delete", class: "dropdown-item"
+            div.dropdown-menu
+              .menu-item
+                i.oi.oi-person 
+                = link_to "Profile", current_user
+              .menu-item
+                i.oi.oi-cog 
+                = link_to "Settings", edit_user_path(current_user)
+              .menu-item
+                i.oi.oi-account-login
+                = link_to "Log out", logout_path, method:"delete"
         - else
           li.nav-item = link_to "Login", login_path, class: 'nav-link'
