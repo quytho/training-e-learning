@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   get 'learning' => 'lessons#index'
   get 'learning/test' => 'lessons#test'
-  resources :courses do 
+  resources :courses do
     member do
       get :words
     end
@@ -27,5 +27,6 @@ Rails.application.routes.draw do
     resources :users
     resources :courses
     resources :lessons
+    resources :words
   end
 end

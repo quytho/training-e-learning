@@ -1,4 +1,4 @@
-class Admin::CoursesController < ApplicationController
+class Admin::CoursesController < AdminController
   layout 'layouts/admin'
   before_action :get_course, only:[:edit, :update, :destroy]
 

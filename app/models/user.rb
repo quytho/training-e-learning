@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
 
   before_save {self.email = email.downcase }
   scope :order_name, -> { order(name: :ASC)}
-  validates :name,length: {maximum:50}, presence:true
-  validates :email,length: {maximum:100}, presence: true, format: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
+  validates :name, length: {maximum:50}, presence:true
+  validates :email, length: {maximum:100}, presence: true, format: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
             uniqueness: {case_sensitive:false}
   has_secure_password
   mount_uploader :image, PictureUploader
