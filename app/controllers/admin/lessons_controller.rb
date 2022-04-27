@@ -1,6 +1,5 @@
-class Admin::LessonsController < ApplicationController
+class Admin::LessonsController < AdminController
   layout 'layouts/admin'
-  helper_method :sort_column, :sort_direction
 
   def index
     @lessons = Lesson.order_name.paginate(page: params[:page], per_page: Settings.paginate)
@@ -18,8 +17,9 @@ class Admin::LessonsController < ApplicationController
       flash[:success] = "Add success"
       redirect_to admin_lessons_path
     else
+      @courses = Course.all
       flash[:danger] = "Add fail"
-      render  new_admin_lessone_path
+      render :new
     end
   end
 
