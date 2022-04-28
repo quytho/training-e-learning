@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :get_course, only: [:show, :words]
+  before_action :get_course, except: [:index]
+  before_action :logged_in_user, except: [:index, :show]
   def index
     @courses = Course.all
   end
@@ -8,15 +9,20 @@ class CoursesController < ApplicationController
   end
 
   def words
-    if logged_in?
-      @words = @course.words
-      render :words
+    @words = @course.words
+    if(params[:filter] == 'learned')
+      @words = Word.where(id: current_user.user_words.pluck(:word_id), course_id: @course.id)
+    elsif(params[:filter] == 'unlearn')
+      word_course = Word.where(course_id: @course.id)
+      @words = word_course.where.not(id: current_user.user_words.pluck(:word_id))
+    elsif(params[:filter] == 'all')
+      @words
     else
-      flash[:danger] = "Please login before viewing the list of words"
-      redirect_to login_path
+      word_course = Word.where(course_id: @course.id)
+      @words = word_course.where('en_word ILIKE ?', "#{params[:key]}%")
     end
   end
-  
+
   private
     def get_course
       @course = Course.includes(:lessons)
