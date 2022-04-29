@@ -1,11 +1,14 @@
 module CoursesHelper
   def check_course_learned(course)
-    if current_user.user_courses.find_by(course_id: course.id).blank?
+    if current_user.user_courses.exists?(course_id: course.id)
+      course_lesson_ids = course.lessons.pluck(:id)
+      if current_user.user_lessons.where(lesson_id: course_lesson_ids).length == course_lesson_ids.length
+        "Completed"
+      else
+        "Continue"
+      end
+    else
       "Get started"
-    elsif current_user.user_courses.find_by(course_id: course.id).is_learned
-      "Completed"
-    else 
-      "Continue"
     end
   end
 
