@@ -21,7 +21,7 @@
           .col
             img.mx-auto.rounded src="https://media.istockphoto.com/vectors/congratulations-greeting-card-vector-lettering-vector-id1199025903?k=20&m=1199025903&s=612x612&w=0&h=f58ZLBcPziVXtX-7PzLm93tfPqVxDtb71tfl2PGQLI8=" height="300"    
           .col.d-flex.justify-content-center.align-items-center
-            = link_to "Do the test", learning_test_path(lesson_id: @lesson.id), class: "btn btn-primary btn-lg"
+            = button_tag "Do the test", class: "btn btn-primary btn-lg btn-do-practice", data: {lesson_id: @lesson.id}
   a.carousel-control.carousel-control-prev data-slide="prev" href="#carouselLesson" role="button" 
     button.btn.btn-primary.btn-lg Previous
   a.carousel-control.carousel-control-next data-slide="next" href="#carouselLesson" role="button" 
