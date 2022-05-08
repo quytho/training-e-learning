@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :courses
     resources :lessons
     resources :words
+    resources :questions
+    resources :answers
   end
   resources :learning, controller: 'lessons', only: [:index, :create] do
     collection do

@@ -10,5 +10,7 @@ table.table
         tr
           td = create_index params[:page], index, Settings.paginate
           td = lesson.name
-          td = link_to 'Delete', admin_lesson_path(lesson), method:"delete", data: {:confirm => "You sure?" }, class: "btn btn-danger"
+          td
+            = link_to 'Delete', admin_lesson_path(lesson), method:"delete", data: {:confirm => "You sure?" }, class: "btn btn-danger mr-1"
+            = link_to 'Add question', admin_questions_path(lesson_id: lesson), class: "btn btn-info"
 = will_paginate @lessons
