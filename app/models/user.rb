@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessor :reset_token
 
-  has_many :user_courses
+  has_many :user_courses, dependent: :destroy
   has_many :user_lessons
-  has_many :user_words
+  has_many :user_words, dependent: :destroy
   has_many :practices
   has_many :active_relationships, class_name: "Relationship",
     foreign_key: "follower_id", dependent: :destroy
@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   before_save {self.email = email.downcase }
-  scope :order_name, -> { order(name: :ASC)}
   validates :name, length: {maximum:50}, presence:true
   validates :email, length: {maximum:100}, presence: true, format: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
             uniqueness: {case_sensitive:false}
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
     (?=.*\d)
   /x
   validates :password, length: {:within => 8..40}, format: { with: PASSWORD_FORMAT }, allow_blank: false
-
+  scope :order_name_user, -> { order(name: :ASC)}
   class << self
     def digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

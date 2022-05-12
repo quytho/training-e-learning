@@ -1,4 +1,4 @@
-.container 
+.container
   h3.text-center.my-4 Words #{@course.name}
   .btn-learn-wrods.my-4
     = button_tag "Get all", class:"btn btn-info mr-2 btn-get-all"
@@ -6,7 +6,7 @@
     = button_tag "Get all unlearn", class:"btn btn-secondary btn-get-unlearn"
   .words_list.mb-4.get-all
     - @words.each do |word|
-      = button_tag "#{word.en_word}", class: "btn words_list-item btn-words-list-item #{check_user_word(word)}", data: {id: word.id}  
+      = button_tag "#{word.en_word}", class: "btn words_list-item btn-words-list-item #{check_user_word(word)}", data: {id: word.id}
       .word_list-info class="info_word-list-#{word.id}"
         .sourd-word.border-bottom
           h4.word_list-title.my-2 = word.en_word
@@ -19,8 +19,8 @@
   .words_list.mb-4.get-all-learned
     - current_user.user_words.each do |user_word|
       - Word.all.each do |word|
-        - if user_word.word_id == word.id 
-          = button_tag "#{word.en_word}", class: "btn words_list-item btn-words-list-item #{check_user_word(word)}", data: {id: word.id} 
+        - if (user_word.word_id == word.id) && (@course.id  == word.course_id)
+          = button_tag "#{word.en_word}", class: "btn words_list-item btn-words-list-item #{check_user_word(word)}", data: {id: word.id}
           .word_list-info class="info_word-list-#{word.id}"
             .sourd-word.border-bottom
               h4.word_list-title.my-2 = word.en_word

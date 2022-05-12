@@ -8,9 +8,9 @@ table.table
       th scope="col"  Description
       th scope="col"  Action
   tbody
-    - @courses.each do |course|
+    - @courses.each_with_index do |course, index|
       tr
-        td = course.id
+        td = create_index params[:page], index, Settings.paginate
         td = course.name
         td = course.description
         td

@@ -1,9 +1,8 @@
 class Admin::UsersController < AdminController
-  layout 'layouts/admin'
   before_action :get_user, only:[:destroy]
 
   def index
-    @users = User.order_name.paginate(page: params[:page], per_page: 10)
+    @users = User.order_name_user.paginate(page: params[:page], per_page: 10)
   end
 
   def destroy

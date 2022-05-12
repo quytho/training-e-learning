@@ -1,9 +1,8 @@
 class Admin::CoursesController < AdminController
-  layout 'layouts/admin'
   before_action :get_course, only:[:edit, :update, :destroy]
 
   def index
-    @courses = Course.paginate(page: params[:page], per_page: Settings.paginate)
+    @courses = Course.order_name_course.paginate(page: params[:page], per_page: Settings.paginate)
   end
 
   def new

@@ -3,4 +3,4 @@ h1.text-center Lesson
   .col-md-6.mx-auto.my-3
     = form_for([:admin, @lesson]) do |f|
       = render "lesson_form", f: f
-      = f.submit"Add lesson", class:"btn btn-primary btn_submit mt-4"
+      = f.submit"Update lesson", class:"btn btn-primary btn_submit mt-4 btn-submit"
