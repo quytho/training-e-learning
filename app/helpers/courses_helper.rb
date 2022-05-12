@@ -39,4 +39,13 @@ module CoursesHelper
       "#{course.lessons.length}"
     end
   end
+
+  def show_score(lesson)
+    if current_user
+      score = current_user.practices.find_by(lesson_id: lesson.id)
+      if score.present?
+        "(#{score.score} point)"
+      end
+    end
+  end
 end

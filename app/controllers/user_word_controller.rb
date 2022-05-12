@@ -3,7 +3,7 @@ class UserWordController < ApplicationController
 
   def create
     @user_word = UserWord.new(user_word_params)
-    if @user_word.save
+    if @user_word.save!
       flash[:success] = "Done Successfully"
       redirect_to request.referrer
     else

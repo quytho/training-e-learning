@@ -31,10 +31,7 @@ class LessonsController < ApplicationController
   end
 
   def practice
-  end
-
-  def get_word
-    render json: @lesson.words.select(:id, :en_word, :vi_word)
+    @questions = Question.includes(:answers).where(lesson_id: @lesson.id)
   end
   
   private

@@ -2,41 +2,46 @@ $(document).ready(function () {
   $(document).on('submit', '#form_practice', function (e) {
     e.preventDefault();
     $('.btn-submit').attr('disabled', true);
-    const answers = $(this).serializeArray();
+    const answers = $(this)
+      .serializeArray()
+      .map((answer) => {
+        return {
+          question: parseInt(answer.name),
+          answer: parseInt(answer.value),
+        };
+      });
     const lesson_id = $('#form_practice').data('lesson');
 
     $.ajax({
       type: 'GET',
-      url: '/learning/get-word',
+      url: '/get-correct-answer',
       dataType: 'json',
       data: { lesson_id: lesson_id },
       success: function (result) {
-        let score = compareAnswers(answers, result);
+        let score = checkCorrectAnswer(answers, result);
         postPractice(score, lesson_id);
       },
     });
   });
 });
 
-function compareAnswers(answers, result) {
+function checkCorrectAnswer(answers, correct) {
   let score = 0;
-  answers.forEach((answer, index) => {
-    let currentInput = $(`input[name='ans_${index + 1}']`);
-    if (answer.value.toLowerCase() === result[index].en_word.toLowerCase()) {
-      currentInput.addClass('is-valid');
-      score++;
-    } else {
-      currentInput.addClass('is-invalid');
-      currentInput
-        .parent()
-        .append(
-          `<div class="invalid-feedback">${result[
-            index
-          ].en_word.toLowerCase()}</div>`
-        );
-    }
+  correct.forEach((c) => {
+    answers.forEach((u) => {
+      if (c.question === u.question) {
+        let userCheck = $(`input#answer-${u.answer}`);
+        if (c.correct_answer === u.answer) {
+          userCheck.addClass('is-correct');
+          score++;
+        } else {
+          let correctCheck = $(`input#answer-${c.correct_answer}`);
+          userCheck.addClass('is-uncorrect');
+          correctCheck.addClass('is-correct');
+        }
+      }
+    });
   });
-
   return score;
 }
 

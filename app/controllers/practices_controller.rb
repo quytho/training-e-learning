@@ -1,5 +1,5 @@
 class PracticesController < ApplicationController
-  before_action :get_lesson
+  before_action :get_lesson, except: [:get_correct_answers]
 
   def create
     practice = current_user.practices.find_by(lesson_id: @lesson.id)
@@ -16,6 +16,20 @@ class PracticesController < ApplicationController
       flash[:danger] = "Something went wrong! Try again."
       redirect_to practice_learning_index_path(lesson_id: @lesson.id)
     end
+  end
+
+  def get_correct_answers
+    questions = Question.includes(:answers).where(lesson_id: params[:lesson_id])
+    custom = [];
+    questions.each do |q|
+      custom.push(
+        {
+          question: q.id,
+          correct_answer: q.answers.find {|a| a.is_key == true }.id
+        }
+      )
+    end
+    render json: questions
   end
 
   private

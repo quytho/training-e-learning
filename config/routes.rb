@@ -32,8 +32,8 @@ Rails.application.routes.draw do
   resources :learning, controller: 'lessons', only: [:index, :create] do
     collection do
       get 'practice'
-      get 'get-word'
     end
   end
   post 'practice' => 'practices#create'
+  get 'get-correct-answer' => 'practices#get_correct_answers'
 end

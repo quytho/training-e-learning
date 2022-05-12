@@ -1,4 +1,4 @@
-@import "bootstrap";
+@import 'bootstrap';
 *,
 *::before,
 *::after {
@@ -49,4 +49,8 @@ ul {
     margin-left: 22px;
     transform: translateY(-45%);
   }
+}
+
+.mxw-600 {
+  max-width: 600px;
 }
