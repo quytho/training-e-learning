@@ -11,6 +11,6 @@
     h1 = @course.name
     h3 Free course
     = show_button_register_course(@course)
-    p.mt-1 = @course.description
-    p.mt-2 Progress: #{check_progress(@course)}
+    p.mt-2 Total: #{@course.words.count} Words
+    p Progress: #{check_progress(@course)} lessons
     span Study anytime, anywhere
