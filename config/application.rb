@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path('boot', __dir__)
 
 require 'rails/all'
 
@@ -22,7 +22,7 @@ module TrainingShop
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

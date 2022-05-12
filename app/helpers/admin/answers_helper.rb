@@ -1,2 +1,4 @@
-module Admin::AnswersHelper
+module Admin
+  module AnswersHelper
+  end
 end
