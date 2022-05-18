@@ -35,5 +35,5 @@ Rails.application.routes.draw do
     end
   end
   post 'practice' => 'practices#create'
-  get 'correct-answer' => 'practices#get_correct_answers'
+  get 'get-correct-answer' => 'practices#correct_answers'
 end

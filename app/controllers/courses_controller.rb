@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :fetch_course, except: [:index]
   before_action :logged_in_user, except: %i[index show]
   def index
-    @courses = Course.all
+    @courses = Course.includes(:lessons).all
   end
 
   def show; end

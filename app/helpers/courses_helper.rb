@@ -1,6 +1,6 @@
 module CoursesHelper
   def check_course_learned(course)
-    if current_user.user_courses.exists?(course_id: course.id)
+    if current_user&.user_courses&.exists?(course_id: course.id)
       course_lesson_ids = course.lessons.pluck(:id)
       if current_user.user_lessons.where(lesson_id: course_lesson_ids)
                      .length == course_lesson_ids.length
@@ -9,7 +9,7 @@ module CoursesHelper
         'Continue'
       end
     else
-      'Get started'
+      'Join now'
     end
   end
 
@@ -34,7 +34,7 @@ module CoursesHelper
 
   def check_progress(course)
     if current_user
-      "#{current_user.user_lessons.count} / #{course.lessons.length}"
+      "#{current_user.user_lessons.size} / #{course.lessons.length}"
     else
       course.lessons.length.to_s
     end

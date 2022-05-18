@@ -1,17 +1,28 @@
-section.container
-  .introduction
-    img src="https://600tuvungtoeic.com/template/english/images/600-tu-vung-toeic.gif" alt=""/
-    h1 Từ vựng TOEIC quan trọng – học cực nhanh
-    p Chào các bạn đến với trang học từ vựng TOEIC đã được chọn lọc và
-      tổng hợp dựa trên kinh nghiệm đi thi TOEIC nhiều lần và nhiều năm
-        kinh nghiệm học TOEIC
-    p.mt-2 Những từ vựng này đã được đưa vào vào Website – một website
-      học từ vựng cực kỳ hiệu quả, giúp các bạn học được nhiều từ vựng nhất
-        trong thời gian ngắn nhất có thể.
-    p: strong Mời các bạn bấm vào các nút bên dưới và xem hướng dẫn để học.
-  .level
-    - Course.all.each do |course|
-      .level_item.text-center
-        h2 = course.name
-        p Những từ vững mà ai cũng phải biết khi bắt đầu học TOEIC (#{course.description})
-        = link_to "View more", course, class:"btn btn-lg btn-primary"
+.hero
+  .container.hero__container
+    .hero__content
+      h1.hero__heading Lockdown Can't Stop Your Learning
+      p.hero__description Elearn is a Global training provider based across the UK that specialises in accredited and bespoke training courses. We crush the barriers to getting a degree.
+      = link_to "Explore courses", courses_path, class: 'btn hero__btn'
+.brand
+  .container.brand__container
+    .d-flex
+      img src="https://cdn.worldvectorlogo.com/logos/udemy-2.svg"
+    .d-flex
+      img src="https://cdn.worldvectorlogo.com/logos/khan-academy-1.svg"
+    .d-flex
+      img src="https://cdn.worldvectorlogo.com/logos/coursera.svg"
+    .d-flex
+      img src="https://cdn.worldvectorlogo.com/logos/udacity-2.svg"
+    .d-flex
+      img src="https://cdn.worldvectorlogo.com/logos/github-2.svg"
+.course
+  .container.course__container
+    .course__search
+      span class="oi oi-magnifying-glass icon-search"
+      input.course__search-input placeholder="Course Name"
+      .course__search-btn Search
+    .course__list
+      = render(@courses) || "No Data Available"
+    .text-center.mt-5
+      = link_to "Load More Courses", courses_path, class: 'btn hero__btn'
