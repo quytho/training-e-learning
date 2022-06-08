@@ -1,0 +1,15 @@
+.publisher-item.course-item
+  .cre1
+    .publisher-id 
+      = course.id
+    .publisher-name.course-name
+      = course.name
+  .cre
+    .publisher-detail.word-detail
+      p.publisher-create.course-create
+        = course.description
+    .publisher-button
+      = link_to "Edit", edit_admin_course_path(course), class: "edit"        
+      = link_to "Delete", admin_course_path(course), class: "delete",
+      method: :delete, data: {confirm: "Are You sure?"}
+      / = link_to 'Add question', admin_questions_path(lesson_id: lesson), class: "detail"

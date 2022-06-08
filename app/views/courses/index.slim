@@ -1,4 +1,5 @@
 .container
-  h2.text-center.mt-3 All Courses
-  .course__list.mt-4
-    = render(@courses) || "No Data Available"
+  .courses-main
+      .courses-heading All Courses
+      .courses-list
+        = render(@courses) || "No Data Available"

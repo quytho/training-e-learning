@@ -17,3 +17,8 @@ h1.text-center.text-uppercase.mt-2 Manage User, Course, Word
     h3 Word Statistics
     h5 Total Word
     = @word_count
+= pie_chart({"Football" => 10, "Basketball" => 5})
+= line_chart User.group_by_day(:created_at, range: 2.weeks.ago.midnight..Time.now).count
+= line_chart Course.group_by_day(:created_at, range: 2.weeks.ago.midnight..Time.now).count
+= line_chart Lesson.group_by_day(:created_at, range: 2.weeks.ago.midnight..Time.now).count
+= line_chart Word.group_by_day(:created_at, range: 2.weeks.ago.midnight..Time.now).count

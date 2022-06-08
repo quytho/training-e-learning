@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)/x.freeze
   validates :password, length: { within: 8..40 },
                        format: { with: PASSWORD_FORMAT }, allow_blank: false
-  scope :order_name_user, -> { order(name: :ASC) }
+  scope :order_name_user, -> { order(is_admin: :DESC) }
   class << self
     def digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

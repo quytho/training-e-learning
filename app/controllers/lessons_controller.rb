@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_action :take_lesson
-
+  skip_before_action :verify_authenticity_token
   def index; end
 
   def create

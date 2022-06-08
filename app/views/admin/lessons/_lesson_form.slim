@@ -1,5 +1,19 @@
-= render'shared/error_messages',object: f.object
-= f.label :name
-= f.text_field:name, class:'form-control'
-= f.label "Course", class: "mt-4"
-= f.select :course_id, @courses.collect {|u| [ u.name, u.id ] }, { include_blank: true }, class:"mt-4"
+/ = render'shared/error_messages',object: f.object
+/ .publisher-form
+/   .publisher-form-fieldname
+/     = form.label :name
+/     = form.text_field :name, placeholder: "Name"
+/   .publisher-form-fieldname
+/     = form.label :Course
+/     / = form.collection_select :course_id, Course.all, :id, :name, class: "select_pub",
+/     /   prompt: true, include_blank: "Select Course"
+/     = form.select :course_id, @courses.collect {|u| [ u.name, u.id ] }, { include_blank: true }, class:"mt-4"
+
+/   / .publisher-form-fieldname.publisher-nested
+/   /   = form.label :Course
+/   /   = form.collection_select :course_id, Course.all, :id, :name, class: "select_pub",
+/   /     prompt: true, include_blank: "Select Course"
+/     / = form.fields_for :publisher do |publisher|
+/     /   = publisher.text_field :name,  placeholder: "Publisher new", class: "new-author"
+/   .book-submit
+/     = form.submit "Add Lesson", class: "button--primary signin-btn publisher-btn"

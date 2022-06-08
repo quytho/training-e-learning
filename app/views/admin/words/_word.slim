@@ -1,0 +1,16 @@
+.publisher-item.word-item
+  .cre1
+    .publisher-id 
+      = word.id
+    .publisher-name.word-name
+      = word.en_word
+  .cre
+    .publisher-detail.word-detail
+      p.publisher-create.word-create
+        = word.vi_word
+      p.publisher-amount.word-amount
+        = word.course.name
+    .publisher-button
+      = link_to "Edit", edit_admin_word_path(word), class: "edit"        
+      = link_to "Delete", admin_word_path(word), class: "delete",
+      method: :delete, data: {confirm: "Are You sure?"}

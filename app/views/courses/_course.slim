@@ -1,11 +1,32 @@
-.course__item
-  .course__item-image
-    = image_tag 'online-course.png'
-  .course__item-title #{course.name}
-  .course__item-price Free
-  .course__item-divider
-  .course__item-stats
-    .icon
-      span class="oi oi-media-play"
-    .text #{course.lessons.size} lessons
-  = link_to "#{check_course_learned(course)}", course, class:"course__item-join"
+/ .course__item
+/   .course__item-image
+/     = image_tag 'online-course.png'
+/   .course__item-title #{course.name}
+/   .course__item-price Free
+/   .course__item-divider
+/   .course__item-stats
+/     .icon
+/       span class="oi oi-media-play"
+/     .text #{course.lessons.size} lessons
+/   = link_to "#{check_course_learned(course)}", course, class:"course__item-join"
+
+
+
+.courses-item
+  .courses-img
+    img alt="" src="https://images.unsplash.com/photo-1635977358539-acdac811214a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80" /
+  .courses-info
+    .courses-name
+      = course.name
+    .courses-star
+      span
+        | Free 
+    .courses-star
+      = course.lessons.size
+      span
+        | lessons
+  .courses-type
+    span
+        | Free 
+  .courses-but
+    = link_to "#{check_course_learned(course)}", course, class: "courses-button"

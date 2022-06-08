@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :users
     resources :courses
     resources :lessons
-    resources :words
+    resources :words do
+      collection {post :import}
+    end
     resources :questions
     resources :answers
   end

@@ -3,7 +3,7 @@ module Admin
     before_action :fetch_lesson, only: %i[edit update destroy]
 
     def index
-      @lessons = Lesson.order_name_lesson.paginate(page: params[:page], per_page: Settings.paginate)
+      @lessons = Lesson.search(params).order_name_lesson.paginate(page: params[:page], per_page: Settings.paginate)
     end
 
     def new

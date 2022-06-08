@@ -1,8 +1,40 @@
+/ - provide(:title, 'Sign up')
+/ .container
+/   h1.text-center Sign Up
+/   .row
+/     .col-md-6.mx-auto.my-3
+/       = form_for(@user) do |f|
+/         = render'signup_form', f: f
+/         = f.submit"Create my account", class:"btn btn-primary btn_submit mt-4 btn-submit"
+
+
+
+
+
+
 - provide(:title, 'Sign up')
 .container
-  h1.text-center Sign Up
-  .row
-    .col-md-6.mx-auto.my-3
-      = form_for(@user) do |f|
-        = render'signup_form', f: f
-        = f.submit"Create my account", class:"btn btn-primary btn_submit mt-4 btn-submit"
+  .signin
+    .signin_left
+      .signin_head
+        .signin-element
+          = image_tag "Element01.png"
+        .signin_image
+          = image_tag "Logo.png"
+        p
+          | Please create a new account here
+      .signin-form
+        = form_for(@user) do |f|
+          = render 'shared/error_messages', object: @user
+          = f.text_field :name, class: 'signin_control', placeholder: "Name"
+          = f.email_field :email, class: 'signin_control', placeholder: "Email"
+          = f.password_field :password, class: 'signin_control', placeholder: "Password"
+          = f.password_field :password_confirmation, class: 'signin_control', placeholder: "Comfirm Password"
+          = f.submit "Create my account", class: "button--primary signin-btn"
+      .signin-footer
+        = image_tag "Element02.png"
+    .signin_right
+      = image_tag "Group.png"
+      p
+        | Do you know you can easily choose your mode of learning on this platform? Hover aboard to know more
+

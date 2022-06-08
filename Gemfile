@@ -11,7 +11,10 @@ gem 'mini_magick'
 gem 'popper_js'
 gem 'rails', '6.0.1'
 gem 'will_paginate'
-
+gem 'roo'
+gem "chartkick"
+gem "groupdate"
+gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 group :production do

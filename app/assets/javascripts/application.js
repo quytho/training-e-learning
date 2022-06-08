@@ -10,9 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// import "chartkick/chart.js"
+// require("chartkick").use(require("highcharts"))
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
 //= require popper
 //= require turbolinks
+//= require("chartkick")
+//= require("chart.js")
 //= require_tree .

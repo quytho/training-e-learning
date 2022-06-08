@@ -1,33 +1,79 @@
-header (class ="navbar navbar-expand-md navbar-light fixed-top bg-light")
-  .container
-    = link_to root_path, class:"navbar-brand" do 
-      = image_tag 'Elearn.svg', width: "200"
-    button.navbar-toggler aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button" 
-      span.navbar-toggler-icon
-    nav (class = "collapse navbar-collapse", id="navbarNavDropdown")
-      ul (class ="navbar-nav ml-auto")
-        li.nav-item = link_to "Home", root_path, class: 'nav-link'
-        li.nav-item = link_to "Course", courses_path, class: 'nav-link'
-        li.nav-item.dropdown
-          a.dropdown-toggle.nav-link data-toggle="dropdown" href="#"
-            | Word list
-          div.dropdown-menu
-            - Course.all.each do |course|
-              = link_to "Word #{course.name}", words_course_path(course.id), class: 'dropdown-item'
-        - if logged_in?
-          li.nav-item = link_to "User", users_path, class: 'nav-link'
-          li.nav-item.dropdown
-            a.dropdown-toggle.nav-link data-toggle="dropdown" href="#"
-              | Account
-            div.dropdown-menu
-              .menu-item
-                i.oi.oi-person 
-                = link_to "Profile", current_user
-              .menu-item
-                i.oi.oi-cog 
-                = link_to "Settings", edit_user_path(current_user)
-              .menu-item
-                i.oi.oi-account-login
-                = link_to "Log out", logout_path, method:"delete"
-        - else
-          li.nav-item = link_to "Login", login_path, class: 'btn btn-login ml-2'
+/ header (class ="navbar navbar-expand-md navbar-light fixed-top bg-light")
+/   .container
+/     = link_to root_path, class:"navbar-brand" do 
+/       = image_tag 'Elearn.svg', width: "200"
+/     button.navbar-toggler aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button" 
+/       span.navbar-toggler-icon
+/     nav (class = "collapse navbar-collapse", id="navbarNavDropdown")
+/       ul (class ="navbar-nav ml-auto")
+/         li.nav-item = link_to "Home", root_path, class: 'nav-link'
+/         li.nav-item = link_to "Course", courses_path, class: 'nav-link'
+/         li.nav-item.dropdown
+/           a.dropdown-toggle.nav-link data-toggle="dropdown" href="#"
+/             | Word list
+/           div.dropdown-menu
+/             - Course.all.each do |course|
+/               = link_to "Word #{course.name}", words_course_path(course.id), class: 'dropdown-item'
+/         - if logged_in?
+/           li.nav-item = link_to "User", users_path, class: 'nav-link'
+/           li.nav-item.dropdown
+/             a.dropdown-toggle.nav-link data-toggle="dropdown" href="#"
+/               | Account
+/             div.dropdown-menu
+/               .menu-item
+/                 i.oi.oi-person 
+/                 = link_to "Profile", current_user
+/               .menu-item
+/                 i.oi.oi-cog 
+/                 = link_to "Settings", edit_user_path(current_user)
+/               .menu-item
+/                 i.oi.oi-account-login
+/                 = link_to "Log out", logout_path, method:"delete"
+/         - else
+/           li.nav-item = link_to "Login", login_path, class: 'btn btn-login ml-2'
+
+
+
+
+body
+  header.header.wrapper
+    .container-fluid
+      .header-main
+        .header-logo
+          = link_to image_tag("Logo.png"), root_path
+          
+        ul.menu
+          .menu-list
+            li.menu-item
+              = link_to "Home", root_path, class: "menu-link"
+            li.menu-item
+              = link_to "Course", courses_path, class: "menu-link"
+            li.menu-item
+              = link_to "User", '#', class: "menu-link"
+            li.dropdown.menu-item1
+              a.dropdown-toggle[href="#" data-toggle="dropdown"]
+                span
+                  | Word List
+                b.caret
+              ul.dropdown-menu
+                - Course.all.each do |course|
+                  li
+                    = link_to "#{course.name}", words_course_path(course.id)
+          - if logged_in?
+            li.dropdown
+              a.dropdown-toggle[href="#" data-toggle="dropdown"]
+                = current_user.name
+                b.caret
+              ul.dropdown-menu
+                li
+                  = link_to "Profile", current_user
+                li
+                  = link_to "Settings", edit_user_path(current_user)
+                li
+                  -if @current_user.is_admin?
+                    = link_to "Dashboard", "#"
+                li
+                  = link_to "Log out", logout_path, method: "delete"
+          - else
+            .menu-button
+              .button.button--primary =link_to "Log in", login_path

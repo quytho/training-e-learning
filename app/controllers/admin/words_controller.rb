@@ -15,6 +15,11 @@ module Admin
       render json: { lessons: @lessons }
     end
 
+    def import
+      Word.import_file params[:file]
+      redirect_to root_url, notice: "Data imported"
+    end
+
     def create
       @word = Word.new(word_params)
       if @word.save
@@ -29,7 +34,7 @@ module Admin
 
     def edit
       @courses = Course.all
-      @lessons = Lesson.where(course_id: params[:course_id])
+      @lessons = Lesson.where(course_id: @word.course_id)
       return unless request.xhr?
 
       render json: { lessons: @lessons }
@@ -58,7 +63,7 @@ module Admin
     private
 
     def word_params
-      params.require(:word).permit(:en_word, :vi_word, :description, :lesson_id, :course_id)
+      params.require(:word).permit(:en_word, :vi_word, :description, :lesson_id, :course_id, :file)
     end
 
     def take_word

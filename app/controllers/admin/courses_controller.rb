@@ -3,7 +3,7 @@ module Admin
     before_action :take_course, only: %i[edit update destroy]
 
     def index
-      @courses = Course.order_name_course.paginate(page: params[:page], per_page: Settings.paginate)
+      @courses = Course.search(params).order_name_course.paginate(page: params[:page], per_page: Settings.paginate)
     end
 
     def new

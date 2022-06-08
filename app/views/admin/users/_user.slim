@@ -1,0 +1,14 @@
+.publisher-item
+  .publisher-name 
+    = user.email
+  .cre-book
+    .publisher-detail
+      p.publisher-create.book-create
+        = user.name
+      p.publisher-amount.
+        = user.is_admin ? "Admin" : "User" 
+    .publisher-button.book-button
+      / = link_to "Details", "#", class: "detail" 
+      = link_to "Edit", edit_admin_user_path(user.id), class: "edit"        
+      = link_to "Delete", admin_user_path(user), class: "delete",
+      method: :delete, data: {confirm: "Are You sure?"}

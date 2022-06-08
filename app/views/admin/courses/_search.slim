@@ -1,0 +1,6 @@
+.form-search.pub
+  = form_tag admin_courses_path, method: :get, 
+    class: "form-inline" do
+      p
+        = text_field_tag :name, params[:name], placeholder: "Nhập tên khóa học cần tìm", class: "form-control book-se"
+        = submit_tag "Search", name: nil, class: "button--search"
