@@ -15,6 +15,8 @@ gem 'roo'
 gem "chartkick"
 gem "groupdate"
 gem 'devise'
+gem 'em-hiredis'
+gem 'redis'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 group :production do
@@ -54,3 +56,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background.
   gem 'spring'
 end
+
+gem "turbo-rails", "~> 1.1"
+
+gem "stimulus-rails", "~> 1.0"

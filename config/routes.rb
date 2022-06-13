@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
   get 'password_resets/new'
   get 'password_resets/edit'
   root 'static_pages#home'
@@ -6,7 +7,11 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  resources :rooms do
+    resources :messages
+  end
   resources :users do
+    get :chat
     member do
       get :following, :followers
     end
