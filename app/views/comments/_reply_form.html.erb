@@ -1,0 +1,14 @@
+<div class="card my-1">
+  <div class="card-body">
+    <%= form_with(model: [@course, @comment]) do |f| %>
+      <%= f.hidden_field :parent_id %>
+      <%= f.hidden_field :course_id, :value => @course.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <div class="form-group">
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', course_path(@course), class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</div>

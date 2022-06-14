@@ -23,6 +23,11 @@ Rails.application.routes.draw do
       get :words
     end
   end
+  resources :courses do
+    resources :comments
+  end
+
+  resources :comments 
   resources :user_course
   resources :user_word
   get 'admin' => 'admin#index'

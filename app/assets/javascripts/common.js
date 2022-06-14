@@ -8,6 +8,7 @@ $(document).ready(function () {
       data: { id: followedId },
     });
   });
+
   $(document).on('click', '.btn-unfollow', function () {
     var followedId = $(this).data('followed-id');
     $.ajax({
@@ -99,4 +100,33 @@ $(document).ready(function () {
     $('.get-all-unlearn').addClass('active-get-all');
     $('.get-all').addClass('unactive-get-all');
   });
+
+
+  $(document).on('click', '.btn-reply', function () {
+      console.log("test")
+      var micropostId = $(this).data("id")
+      var parentId = $(this).data("parent-id")
+      $.ajax({
+          method: "get",
+          url: "/courses/" + micropostId + "/comments/new?parent_id=" + parentId,
+      })
+  })
+
+  $(document).on('click', '.btn-update', function () {
+      var commentId = $(this).data("comment-id")
+      console.log(commentId)
+      $.ajax({
+          method: "get",
+          url: "/comments/" + commentId + "/edit",
+      })
+  })
+
+  $(document).on('click', '.btn_comment', function () {
+      var micropostId = $(this).data("id")
+      // console.log(micropostId)
+      var classCm = ".comment" + "-" + micropostId
+      // console.log(classCm)
+      $(classCm).toggle("active");
+  })
+
 });
