@@ -15,3 +15,6 @@
       p.mt-2 Total: #{@course.words.size} Words
       p Progress: #{check_progress(@course)} lessons
       span Study anytime, anywhere
+  = render 'comments/form'
+
+  = render @course.comments

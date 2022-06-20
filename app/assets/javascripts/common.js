@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  console.log("ngu")
   $(document).on('click', '.btn-follow', function () {
     var followedId = $(this).data('followed-id');
     $.ajax({
@@ -7,6 +8,7 @@ $(document).ready(function () {
       data: { id: followedId },
     });
   });
+
   $(document).on('click', '.btn-unfollow', function () {
     var followedId = $(this).data('followed-id');
     $.ajax({

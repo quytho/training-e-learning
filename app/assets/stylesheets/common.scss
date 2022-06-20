@@ -1042,3 +1042,21 @@ li.prev.previous_page {
   color: #5C5C5C;
   font-weight: 600;
 }
+
+#rooms {
+  display: flex;
+  flex-direction: column;
+  gap: 5px 0px;
+  a{
+    color: black;
+    font-size: 20px;
+    text-transform: capitalize;
+  }
+}
+.form-room{
+  display: flex !important;
+  flex-direction: column; 
+  .form-control{
+    width: 180px !important;
+  }
+}

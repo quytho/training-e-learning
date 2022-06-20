@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :user_lessons
   has_many :user_words, dependent: :destroy
   has_many :practices
+  has_many :messages
+  has_many :comments, dependent: :destroy
+  has_many :participants
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id',
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
@@ -23,6 +26,8 @@ class User < ActiveRecord::Base
   validates :password, length: { within: 8..40 },
                        format: { with: PASSWORD_FORMAT }, allow_blank: false
   scope :order_name_user, -> { order(is_admin: :DESC) }
+  scope :all_except, ->(user) { where.not(id: user) }
+  after_create_commit { broadcast_append_to "users" }
   class << self
     def digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
