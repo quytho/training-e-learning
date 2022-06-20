@@ -50,6 +50,7 @@ class CommentsController < ApplicationController
     # render json: params
     @course = Course.find(params[:course_id])
     @comment = @course.comments.create(comment_params)
+    byebug
     if @comment.save
       flash[:success] = "Comment successfully"
       redirect_to request.referrer || root_url
@@ -66,6 +67,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
   end
+
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)

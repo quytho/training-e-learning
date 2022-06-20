@@ -6,6 +6,7 @@ class Word < ActiveRecord::Base
   validates :en_word, presence: true, uniqueness: true
   validates :vi_word, presence: true
   scope :oder_by_name_word, -> { order(id: :ASC) }
+  
   class << self
     def import_file file
     # file có thể ở dạng file hoặc là path của file đều được xử lý chính xác bởi method open
